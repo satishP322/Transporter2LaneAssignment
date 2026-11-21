@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: transporter-assignment
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: DATA_DIR
+        value: /app/data
+      - key: DB_PASSWORD
+        generateValue: true

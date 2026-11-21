@@ -1,0 +1,13 @@
+target/
+.venv/
+.tools/
+data/
+.env
+.env.*
+.vercel/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+*.log
+__pycache__/

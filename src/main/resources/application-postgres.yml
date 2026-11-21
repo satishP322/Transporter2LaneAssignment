@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:5432/${PGDATABASE}?sslmode=require&channelBinding=require
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 2
+      minimum-idle: 0
+  sql:
+    init:
+      schema-locations: classpath:schema-postgres.sql

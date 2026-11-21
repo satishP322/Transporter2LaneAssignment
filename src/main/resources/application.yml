@@ -1,0 +1,40 @@
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  forward-headers-strategy: framework
+spring:
+  application:
+    name: transporter-assignment
+  datasource:
+    url: jdbc:h2:file:${DATA_DIR:./data}/transporters;DB_CLOSE_ON_EXIT=FALSE;WRITE_DELAY=0
+    username: sa
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 4
+  sql:
+    init:
+      mode: always
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      fail-on-trailing-tokens: true
+      accept-float-as-int: false
+    parser:
+      strict-duplicate-detection: true
+    mapper:
+      allow-coercion-of-scalars: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    try-it-out-enabled: true
+    operations-sorter: alpha
+    tags-sorter: alpha
+    disable-swagger-default-url: true
